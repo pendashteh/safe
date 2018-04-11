@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Usage:
+# $ safe rm ./*
+# > Are you sure you want to 'rm ./*'? [y/n]
+# $ y
+# $ rm ./*
+
+
+args=${*}
+
+echo "Are you sure you want to '"args"'? [y/n]"
+read is_sure
+case $is_sure in
+    [Yy]*)
+        echo $args
+    ;;
+    *)
+        echo "Ok, moving on. They say, better to be safe than sorry."
+    ;;
+esac
+
