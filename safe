@@ -6,14 +6,12 @@
 # $ y
 # $ rm ./*
 
-
-args=${*}
-
-echo "Are you sure you want to '"$args"'? [y/n]"
+args_arr=("$@")
+echo "Are you sure you want to '"${args_arr[@]}"'? [y/n]"
 read is_sure
 case $is_sure in
     [Yy]*)
-        $args
+        "${args_arr[@]}"
     ;;
     *)
         echo "Ok, moving on. They say, better to be safe than sorry."
