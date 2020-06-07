@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 # Usage:
-# $ safe rm ./*
-# > Are you sure you want to 'rm ./*'? [y/n]
-# $ y
-# $ rm ./*
+# $ safe rm *
+# > rm LICENSE README.md safe
+# Are you sure? y|n n
 
 echo '> '$@
 read -p 'Are you sure? y|n ' -n1

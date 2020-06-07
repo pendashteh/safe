@@ -10,14 +10,16 @@ $ safe [shell command and its arguments]
 # Examples
 ```
 $ safe rm /var/log/backup*
-> Are you sure you want to 'rm backups backups_old'? [y/n]
+> rm backups backups_old
+Are you sure? y|n
 ```
 
 Tip: notice that it replaces * with what SHELL interprets it as. In this case `backup* --> backups backups_old`
 
 ```
 $ safe dd if=/path/to/old/image of=/dev/sda
-> Are you sure you want to 'dd if=/path/to/old/image of=/dev/sda'? [y/n]
+> dd if=/path/to/old/image of=/dev/sda
+Are you sure? y|n
 ```
 
 # Use cases
@@ -31,8 +33,8 @@ rm -rf $HOME/backups
 If you run this script normally it will delete the directory without asking any question:
 ```
 $ ./run-backup.sh
-> backup start...
-> done.
+backup start...
+done.
 ```
 This is great for running the script as a `cron` job or any automated process. But when you run it manually you want to be warned.
 
@@ -43,8 +45,9 @@ $ alias rm='safe rm'
 Now, you can run the script again but this time you will be warned first:
 ```
 $ bash -i ./run-backup.sh
-> backup start...
-> Are you sure you want to 'rm -rf /home/alexar/backups'? [y/n]
+backup start...
+> rm -rf /home/user/backups
+Are you sure? y|n
 ```
 
 # @TODO
