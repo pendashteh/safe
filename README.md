@@ -50,6 +50,23 @@ backup start...
 Are you sure? y|n
 ```
 
+## Parameter expansion
+All parameters passed to `safe` are expanded. In other words, paths containing wildcards will be expanded to a list of correspanding files and directories. This is particularly helpfule when `safe` used with `rm`.
+```
+$ alias rm='safe rm'
+```
+When deleting the test images you may notice a test audio which was not intended to be deleted.
+```
+$ rm test*
+> rm test test_000.png test_001.png test-0.png test-1.png testaudio.mp3
+Are you sure? y|n n
+Ok, moving on. They say, better to be safe than sorry.
+$ rm test*png
+> rm test test_000.png test_001.png test-0.png test-1.png
+Are you sure? y|n y
+Alright.
+```
+
 # @TODO
 - Write about usecases. (it does have very interesting and useful usecases)
 - Write `unsafe`
